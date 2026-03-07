@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Natalia & Martín — Boda Minimalista</title>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@200;300;400&family=Cinzel:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #111010;
+    --white: #f9f9f8;
+    --mid: #888;
+    --line: #e0e0de;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); }
+
+  /* ── HEADER GRID ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+  .header-left {
+    background: var(--black);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-left img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+    mix-blend-mode: luminosity;
+    filter: grayscale(100%);
+  }
+  .header-left-content { position: relative; z-index: 1; }
+  .hl-label {
+    font-size: 0.55rem; letter-spacing: 0.45em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 2rem;
+  }
+  .hl-date {
+    font-family: 'Cinzel', serif; font-weight: 300;
+    font-size: 0.75rem; letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.55);
+  }
+  .hl-venue {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 1.4rem; color: rgba(255,255,255,0.8);
+    margin-top: 0.4rem;
+  }
+
+  .header-right {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    border-left: 1px solid var(--line);
+  }
+  .hr-tag {
+    font-size: 0.55rem; letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hr-tag::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+  .hr-names {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    color: var(--black);
+  }
+  .hr-amp {
+    font-style: italic;
+    display: block;
+    font-size: 0.45em;
+    color: var(--mid);
+    margin: 0.3em 0;
+    letter-spacing: 0.2em;
+  }
+  .hr-meta {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.72rem;
+    color: var(--mid);
+    line-height: 2;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── CONTENT ── */
+  .band { padding: 6rem 8vw; border-top: 1px solid var(--line); }
+  .inner { max-width: 1000px; margin: 0 auto; }
+
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .editorial-grid.rev { grid-template-columns: 1fr 300px; }
+
+  .eg-aside { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mid); }
+  .eg-aside h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem; font-style: italic;
+    color: var(--black); text-transform: none;
+    letter-spacing: 0; margin-top: 0.6rem; line-height: 1.2;
+  }
+
+  .eg-body { font-size: 0.8rem; line-height: 2.4; color: #555; font-weight: 300; }
+  .eg-body strong { color: var(--black); font-weight: 400; }
+
+  /* ── PHOTO GRID ── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    height: 500px;
+  }
+  .photo-grid img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%);
+    display: block;
+    transition: filter 0.4s;
+  }
+  .photo-grid img:hover { filter: grayscale(0%); }
+  .photo-grid .tall { grid-row: span 2; }
+  .photo-grid-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 250px 250px;
+    gap: 2px;
+  }
+  .photo-grid-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%); transition: filter 0.4s; display: block; }
+  .photo-grid-wrap img:hover { filter: grayscale(0%); }
+  .photo-grid-wrap .wide { grid-column: span 2; }
+  .photo-section { max-width: 1000px; margin: 0 auto; padding: 0 8vw 6rem; }
+
+  /* ── DETAILS TABLE ── */
+  .details-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+  .details-table tr { border-bottom: 1px solid var(--line); }
+  .details-table td { padding: 1.4rem 0; vertical-align: top; font-size: 0.8rem; }
+  .details-table td:first-child {
+    width: 140px; font-size: 0.55rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--mid); padding-right: 2rem;
+  }
+  .details-table .val {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 1.05rem; color: var(--black);
+  }
+  .details-table .sub { font-size: 0.7rem; color: var(--mid); margin-top: 0.2rem; }
+
+  /* ── COUNTDOWN ── */
+  .cd-section {
+    background: var(--black); color: var(--white);
+    padding: 6rem 8vw;
+    text-align: center;
+  }
+  .cd-label-top { font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--mid); margin-bottom: 3rem; }
+  .cd-nums { display: flex; justify-content: center; align-items: baseline; gap: 0; }
+  .cd-unit { text-align: center; padding: 0 3rem; border-right: 1px solid #222; }
+  .cd-unit:last-child { border-right: none; }
+  .cd-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem; line-height: 1;
+    display: block; color: var(--white);
+  }
+  .cd-lbl { font-size: 0.5rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--mid); margin-top: 0.5rem; }
+
+  footer { padding: 4rem 8vw; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+  .foot-names { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.4rem; color: var(--black); }
+  .foot-note { font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mid); }
+
+  @media (max-width:768px) {
+    .header, .editorial-grid, .editorial-grid.rev { grid-template-columns: 1fr; }
+    .header-left { min-height: 50vh; }
+    .cd-unit { padding: 0 1.5rem; }
+    .cd-num { font-size: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" alt="">
+    <div class="header-left-content">
+      <p class="hl-label">La boda de</p>
+      <p class="hl-date">28 · FEBRERO · 2026</p>
+      <p class="hl-venue">Hotel Alma Barcelona</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <p class="hr-tag">Invitación</p>
+    <h1 class="hr-names">
+      Natalia
+      <span class="hr-amp">&amp;</span>
+      Martín
+    </h1>
+    <div class="hr-meta">
+      Sábado 28 de Febrero de 2026<br>
+      Ceremonia a las 17:30 hrs<br>
+      Barcelona, España
+    </div>
+  </div>
+</header>
+
+<!-- HISTORIA -->
+<section class="band">
+  <div class="inner">
+    <div class="editorial-grid">
+      <div class="eg-aside">
+        Historia<br>
+        <h3>Dos años, una historia</h3>
+      </div>
+      <div class="eg-body">
+        Natalia y Martín se conocieron en Barcelona en 2023, presentados por amigos en común en una cena informal que duró hasta la madrugada. Hablaron de arte, viajes y sueños hasta que el café se enfrió.<br><br>
+        A los dos meses, Martín se apareció con un billete a Tokio — su destino soñado de Natalia. Desde entonces no se han separado.<br><br>
+        El <strong>28 de febrero de 2026</strong>, dan el paso más importante de sus vidas. Y quieren que tú seas parte de ese momento.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<div class="photo-section">
+  <div class="photo-grid-wrap">
+    <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1000&q=80" alt="" class="wide">
+    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&q=80" alt="">
+  </div>
+</div>
+
+<!-- DETALLES -->
+<section class="band">
+  <div class="inner">
+    <div class="editorial-grid rev">
+      <div class="eg-body">
+        <table class="details-table">
+          <tr><td>Fecha</td><td><div class="val">Sábado 28 de Febrero</div><div class="sub">2026</div></td></tr>
+          <tr><td>Ceremonia</td><td><div class="val">17:30 hrs</div><div class="sub">Capilla Hotel Alma</div></td></tr>
+          <tr><td>Recepción</td><td><div class="val">20:00 hrs</div><div class="sub">Gran Salón Rooftop</div></td></tr>
+          <tr><td>Lugar</td><td><div class="val">Hotel Alma Barcelona</div><div class="sub">Carrer de Mallorca 271, Barcelona</div></td></tr>
+          <tr><td>Dress Code</td><td><div class="val">Smart Casual</div><div class="sub">Paleta neutros y negro</div></td></tr>
+          <tr><td>RSVP</td><td><div class="val">Antes del 31 Enero 2026</div><div class="sub">hola@nataliaymartin.com</div></td></tr>
+        </table>
+      </div>
+      <div class="eg-aside">
+        Detalles<br>
+        <h3>Todo lo que necesitas saber</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="cd-section">
+  <p class="cd-label-top">Faltan</p>
+  <div class="cd-nums">
+    <div class="cd-unit"><span class="cd-num" id="days">--</span><div class="cd-lbl">Días</div></div>
+    <div class="cd-unit"><span class="cd-num" id="hours">--</span><div class="cd-lbl">Horas</div></div>
+    <div class="cd-unit"><span class="cd-num" id="mins">--</span><div class="cd-lbl">Min</div></div>
+    <div class="cd-unit"><span class="cd-num" id="secs">--</span><div class="cd-lbl">Seg</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-names">Natalia &amp; Martín</div>
+  <div class="foot-note">28 · 02 · 2026 · Barcelona</div>
+</footer>
+
+<script>
+  const d = new Date('2026-02-28T17:30:00');
+  function tick() {
+    const r = d - new Date(); if(r<=0) return;
+    document.getElementById('days').textContent  = String(Math.floor(r/86400000)).padStart(2,'0');
+    document.getElementById('hours').textContent = String(Math.floor((r%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('mins').textContent  = String(Math.floor((r%3600000)/60000)).padStart(2,'0');
+    document.getElementById('secs').textContent  = String(Math.floor((r%60000)/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+<footer style="text-align:center;padding:1.5rem 2rem;font-size:0.55rem;letter-spacing:0.35em;text-transform:uppercase;font-family:sans-serif;background:rgba(0,0,0,0.25);">
+  <span style="vertical-align:middle;color:rgba(255,255,255,0.5);">Created with <span style="color:#C9A96E;font-size:1.5em;">♥</span> by</span>
+  <a href="https://hatechnologiespr.com" target="_blank" style="display:inline-block;vertical-align:middle;margin-left:0.6em;text-decoration:none;">
+    <img src="images/HALogo.png" alt="MyWeddingDayPR" style="height:32px;vertical-align:middle;">
+  </a>
+</footer>
+</body>
+</html>

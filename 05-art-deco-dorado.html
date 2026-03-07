@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gabriela & Rafael — Boda Art Deco</title>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel+Decorative:wght@400&family=Cinzel:wght@300;400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e4cfaa;
+    --gold-pale: rgba(201,169,110,0.12);
+    --black: #0a0805;
+    --cream: #f5eed8;
+    --warm: rgba(245,238,216,0.08);
+  }
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── ART DECO HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+  }
+  .hero-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.18;
+    filter: sepia(60%) brightness(0.6);
+  }
+  /* Art deco overlay pattern */
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, var(--black) 0%, transparent 20%, transparent 80%, var(--black) 100%),
+      radial-gradient(ellipse at center, transparent 40%, rgba(10,8,5,0.7) 100%);
+  }
+
+  /* Art deco geometric frame */
+  .deco-frame {
+    position: absolute; inset: 3rem;
+    pointer-events: none;
+  }
+  .deco-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1px solid rgba(201,169,110,0.25);
+  }
+  .deco-frame::after {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(201,169,110,0.1);
+  }
+  /* Corner gems */
+  .corner {
+    position: absolute;
+    width: 40px; height: 40px;
+    border-color: var(--gold);
+    opacity: 0.6;
+  }
+  .corner-tl { top: 3rem; left: 3rem; border-top: 1px solid; border-left: 1px solid; }
+  .corner-tr { top: 3rem; right: 3rem; border-top: 1px solid; border-right: 1px solid; }
+  .corner-bl { bottom: 3rem; left: 3rem; border-bottom: 1px solid; border-left: 1px solid; }
+  .corner-br { bottom: 3rem; right: 3rem; border-bottom: 1px solid; border-right: 1px solid; }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 700px;
+    animation: appear 1.5s ease;
+  }
+  @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+
+  .deco-top {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .deco-top-line { flex: 0 0 60px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .deco-top-gem {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.7;
+  }
+
+  .eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
+  .hero-names {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    line-height: 1.2;
+    color: var(--gold-light);
+    text-shadow: 0 0 60px rgba(201,169,110,0.3);
+    letter-spacing: 0.05em;
+  }
+  .hero-amp {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 0.3em;
+    margin: 0.8rem 0;
+  }
+
+  .deco-mid {
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .deco-mid-line { flex: 0 0 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); opacity: 0.4; }
+  .deco-mid-line.rev { background: linear-gradient(to left, transparent, var(--gold)); }
+  .deco-mid-diamond {
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .deco-mid-diamond span {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+  .deco-mid-diamond span:nth-child(2) { width: 9px; height: 9px; opacity: 0.9; }
+
+  .hero-date {
+    font-family: 'Cinzel', serif;
+    font-weight: 300;
+    font-size: 0.78rem;
+    letter-spacing: 0.4em;
+    color: var(--cream);
+    opacity: 0.7;
+    margin-bottom: 0.4rem;
+  }
+  .hero-place {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    opacity: 0.7;
+  }
+
+  /* ── CONTENT SECTIONS ── */
+  .content { max-width: 700px; margin: 0 auto; }
+
+  .band {
+    padding: 5rem 2rem;
+    border-top: 1px solid rgba(201,169,110,0.1);
+  }
+  .band-center { text-align: center; }
+
+  .band-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.55;
+    margin-bottom: 1rem;
+  }
+  .band-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .band-text {
+    font-size: 0.8rem;
+    line-height: 2.2;
+    color: rgba(245,238,216,0.4);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* Details art-deco grid */
+  .deco-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,169,110,0.1);
+    margin-top: 3rem;
+    border: 1px solid rgba(201,169,110,0.1);
+  }
+  .deco-cell {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .deco-cell::before {
+    content: '';
+    position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(201,169,110,0.07);
+    pointer-events: none;
+  }
+  .dc-icon { font-size: 1.4rem; color: var(--gold); opacity: 0.35; margin-bottom: 1rem; }
+  .dc-label { font-size: 0.5rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); opacity: 0.45; margin-bottom: 0.6rem; }
+  .dc-val { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--gold-light); }
+  .dc-sub { font-size: 0.65rem; color: rgba(245,238,216,0.25); margin-top: 0.25rem; letter-spacing: 0.07em; }
+
+  /* ── IMAGE PAIR ── */
+  .img-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    height: 400px;
+  }
+  .img-pair img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: sepia(30%) brightness(0.6);
+    transition: filter 0.4s;
+    display: block;
+  }
+  .img-pair img:hover { filter: sepia(10%) brightness(0.8); }
+
+  /* ── COUNTDOWN ── */
+  .countdown-band {
+    padding: 5rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,110,0.1);
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+    background: var(--gold-pale);
+  }
+  .cd-row { display: flex; justify-content: center; gap: 4rem; margin-top: 2.5rem; }
+  .cd-num {
+    font-family: 'Cinzel', serif;
+    font-weight: 300;
+    font-size: 3.5rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    text-shadow: 0 0 30px rgba(201,169,110,0.3);
+  }
+  .cd-lbl { font-size: 0.48rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(201,169,110,0.3); margin-top: 0.5rem; }
+  .cd-sep { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold); opacity: 0.2; align-self: flex-start; padding-top: 0.4rem; }
+
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(201,169,110,0.08);
+  }
+  .footer-monogram {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: rgba(201,169,110,0.2);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.6rem;
+  }
+  .footer-note { font-size: 0.5rem; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,238,216,0.1); }
+</style>
+</head>
+<body>
+
+<!-- HERO ART DECO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=1800&q=80" alt="">
+  </div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+  <div class="deco-frame"></div>
+
+  <div class="hero-inner">
+    <div class="deco-top">
+      <div class="deco-top-line"></div>
+      <div class="deco-top-gem"></div>
+      <div class="deco-top-line"></div>
+    </div>
+    <p class="eyebrow">Con todo el amor del mundo</p>
+    <h1 class="hero-names">
+      Gabriela
+      <span class="hero-amp">&amp;</span>
+      Rafael
+    </h1>
+    <div class="deco-mid">
+      <div class="deco-mid-line rev"></div>
+      <div class="deco-mid-diamond">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="deco-mid-line"></div>
+    </div>
+    <p class="hero-date">DOMINGO · 22 DE MARZO · 2026</p>
+    <p class="hero-place">Grand Hôtel Splendide · Roma</p>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- HISTORIA -->
+  <div class="band band-center">
+    <p class="band-label">Nuestra historia</p>
+    <h2 class="band-title">Amor a la primera vista</h2>
+    <p class="band-text">
+      En la terraza de un hotel romano, bajo la luz dorada del atardecer,<br>
+      Gabriela y Rafael se vieron por primera vez.<br><br>
+      Tres años después, en ese mismo balcón, Rafael le pidió matrimonio.<br>
+      El destino ya lo había escrito desde el principio.
+    </p>
+  </div>
+
+  <!-- IMAGES -->
+  <div class="img-pair">
+    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=900&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="">
+  </div>
+
+  <!-- DETALLES -->
+  <div class="band">
+    <p class="band-label" style="text-align:center">Los detalles del evento</p>
+    <div class="deco-grid">
+      <div class="deco-cell">
+        <div class="dc-icon">⏳</div>
+        <div class="dc-label">Fecha & Hora</div>
+        <div class="dc-val">22 Marzo 2026</div>
+        <div class="dc-sub">18:00 horas</div>
+      </div>
+      <div class="deco-cell">
+        <div class="dc-icon">🏛</div>
+        <div class="dc-label">Ceremonia</div>
+        <div class="dc-val">Basílica di Santa Maria</div>
+        <div class="dc-sub">Piazza del Popolo, Roma</div>
+      </div>
+      <div class="deco-cell">
+        <div class="dc-icon">🥂</div>
+        <div class="dc-label">Recepción</div>
+        <div class="dc-val">Grand Hôtel Splendide</div>
+        <div class="dc-sub">Via Veneto 125, Roma</div>
+      </div>
+      <div class="deco-cell">
+        <div class="dc-icon">👗</div>
+        <div class="dc-label">Dress Code</div>
+        <div class="dc-val">Black Tie</div>
+        <div class="dc-sub">Etiqueta formal requerida</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- COUNTDOWN -->
+<section class="countdown-band">
+  <p class="band-label">El gran día se acerca</p>
+  <div class="cd-row">
+    <div><span class="cd-num" id="days">--</span><div class="cd-lbl">Días</div></div>
+    <div class="cd-sep">·</div>
+    <div><span class="cd-num" id="hours">--</span><div class="cd-lbl">Horas</div></div>
+    <div class="cd-sep">·</div>
+    <div><span class="cd-num" id="mins">--</span><div class="cd-lbl">Min</div></div>
+    <div class="cd-sep">·</div>
+    <div><span class="cd-num" id="secs">--</span><div class="cd-lbl">Seg</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-monogram">G &amp; R</div>
+  <p class="footer-note">Gabriela &amp; Rafael · 22.03.2026 · Roma</p>
+</footer>
+
+<script>
+  const d = new Date('2026-03-22T18:00:00');
+  function tick() {
+    const r = d - new Date(); if(r<=0) return;
+    document.getElementById('days').textContent  = String(Math.floor(r/86400000)).padStart(2,'0');
+    document.getElementById('hours').textContent = String(Math.floor((r%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('mins').textContent  = String(Math.floor((r%3600000)/60000)).padStart(2,'0');
+    document.getElementById('secs').textContent  = String(Math.floor((r%60000)/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+<footer style="text-align:center;padding:1.5rem 2rem;font-size:0.55rem;letter-spacing:0.35em;text-transform:uppercase;font-family:sans-serif;background:rgba(0,0,0,0.25);">
+  <span style="vertical-align:middle;color:rgba(255,255,255,0.5);">Created with <span style="color:#C9A96E;font-size:1.5em;">♥</span> by</span>
+  <a href="https://hatechnologiespr.com" target="_blank" style="display:inline-block;vertical-align:middle;margin-left:0.6em;text-decoration:none;">
+    <img src="images/HALogo.png" alt="MyWeddingDayPR" style="height:32px;vertical-align:middle;">
+  </a>
+</footer>
+</body>
+</html>
