@@ -9,8 +9,7 @@ Cada invitación ofrece una experiencia visual única, cuidadosamente diseñada 
 ## Estilos disponibles
 
 | # | Nombre | Estilo |
-|---|--------|--------|
-
+| --- | --- | --- |
 | 01 | Clásico Marfil | Elegante, atemporal, tonos marfil y dorado |
 | 02 | Romance Oscuro | Dramático, sofisticado, fondo oscuro con detalles dorados |
 | 03 | Botánico Sage | Natural, fresco, verde salvia y elementos botánicos |
@@ -33,6 +32,7 @@ Cada invitación ofrece una experiencia visual única, cuidadosamente diseñada 
 - **Sin costo de envío** — llega al instante a todos tus invitados.
 
 ---
+Para ver todos nuestro diseños, visita [MyWeddingDayPR.github.io](https://MyWeddingDayPR.github.io)
 
 ## Propiedad
 
